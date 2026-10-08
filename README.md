@@ -2,12 +2,14 @@
 
 A CodeIgniter 4 point-of-sale system for a car showroom. Staff can manage cars, customers, and team members; record a sale; and review sales history. The interface is responsive and uses original generated automotive imagery.
 
+**Live site:** [velos-pos.vercel.app](https://velos-pos.vercel.app/login)
+
 ## Features
 
 - Staff sign-in and sign-out with hashed passwords and database-backed sessions
 - Protected management routes and CSRF-protected forms
 - Create, view, edit, and archive cars, customers, and staff
-- Verified JPEG, PNG, and WebP uploads, stored in MySQL and served with safe image headers
+- Verified JPEG, PNG, and WebP uploads, stored in the database and served with safe image headers
 - Record a sale with an optional customer, current product price, and an atomic stock update
 - Reject sales that exceed available stock without creating a transaction
 - Sales history with product, customer, staff, quantity, total, and date
@@ -41,6 +43,8 @@ Remove-Item Env:SEED_ADMIN_PASSWORD
 ## Vercel deployment
 
 The project includes `api/index.php` and `vercel.json` for the [community PHP runtime](https://github.com/vercel-community/php). Vercel's PHP runtime is community maintained. A persistent external database is required because Vercel Functions do not provide persistent local storage. The app stores sessions and uploaded images in the database; temporary framework files use `/tmp` on Vercel.
+
+The live deployment uses the Vercel project `velos-pos` in the `elishas-projects-c8707e7b` team with its connected Neon PostgreSQL database. Its Production environment has `APP_BASE_URL=https://velos-pos.vercel.app/`. The initial migration and seed completed on the first build; later builds run them idempotently without `SEED_ADMIN_PASSWORD`.
 
 1. Provision a PostgreSQL database through Neon or a MySQL database that accepts connections from Vercel Functions.
 2. Connect the database to the Vercel project, or set the MySQL connection variables below.
