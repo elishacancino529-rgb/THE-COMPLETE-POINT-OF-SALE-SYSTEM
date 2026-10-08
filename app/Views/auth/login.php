@@ -6,9 +6,10 @@
   <link rel="icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('style.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=login-layout-2">
 </head>
 <body class="login-page">
+<div class="login-shell">
   <div class="login-art" style="background-image:linear-gradient(90deg,rgba(10,5,7,.18),rgba(10,5,7,.1)),url('<?= base_url('hero-car.webp') ?>')">
     <a class="brand login-brand" href="<?= site_url('/') ?>"><span class="brand-mark">✦</span><span>VELOS<span class="brand-dot">.</span></span></a>
     <div class="login-art-copy"><span class="tiny-label">AUTOMOTIVE RETAIL SYSTEM</span><h1>Every sale.<br>Full throttle.</h1><p>Inventory, people, and performance in one place.</p></div>
@@ -29,5 +30,6 @@
       <div class="login-footnote">Authorized staff only · Secure session</div>
     </div>
   </main>
+</div>
 </body>
 </html>
