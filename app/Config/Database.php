@@ -194,7 +194,19 @@ class Database extends Config
     {
         parent::__construct();
 
-        if (getenv('POS_DB_HOST')) {
+        $postgresUrl = getenv('POSTGRES_URL') ?: getenv('DATABASE_URL');
+        if ($postgresUrl && str_starts_with($postgresUrl, 'postgres')) {
+            $parts = parse_url($postgresUrl);
+            $this->default['hostname'] = $parts['host'] ?? '';
+            $this->default['database'] = ltrim($parts['path'] ?? '', '/');
+            $this->default['username'] = rawurldecode($parts['user'] ?? '');
+            $this->default['password'] = rawurldecode($parts['pass'] ?? '');
+            $this->default['port'] = (int) ($parts['port'] ?? 5432);
+            $this->default['DBDriver'] = 'Postgre';
+            $this->default['charset'] = 'utf8';
+            $this->default['sslmode'] = 'require';
+            $this->default['DBDebug'] = ENVIRONMENT !== 'production';
+        } elseif (getenv('POS_DB_HOST')) {
             $this->default['hostname'] = getenv('POS_DB_HOST');
             $this->default['database'] = getenv('POS_DB_NAME') ?: '';
             $this->default['username'] = getenv('POS_DB_USER') ?: '';

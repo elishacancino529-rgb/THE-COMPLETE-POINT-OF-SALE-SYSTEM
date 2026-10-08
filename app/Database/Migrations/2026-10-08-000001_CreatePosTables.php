@@ -3,11 +3,13 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class CreatePosTables extends Migration
 {
     public function up()
     {
+        $postgres = $this->db->DBDriver === 'Postgre';
         $this->forge->addField([
             'id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
             'name' => ['type' => 'VARCHAR', 'constraint' => 100],
@@ -66,7 +68,7 @@ class CreatePosTables extends Migration
         $this->forge->addField([
             'id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
             'mime_type' => ['type' => 'VARCHAR', 'constraint' => 40],
-            'content' => ['type' => 'LONGBLOB'],
+            'content' => ['type' => $postgres ? 'TEXT' : 'LONGTEXT'],
             'created_at' => ['type' => 'DATETIME'],
         ]);
         $this->forge->addKey('id', true);
@@ -74,8 +76,8 @@ class CreatePosTables extends Migration
 
         $this->forge->addField([
             'id' => ['type' => 'VARCHAR', 'constraint' => 128],
-            'ip_address' => ['type' => 'VARCHAR', 'constraint' => 45],
-            'timestamp' => ['type' => 'INT', 'unsigned' => true, 'default' => 0],
+            'ip_address' => $postgres ? ['type' => 'INET'] : ['type' => 'VARCHAR', 'constraint' => 45],
+            'timestamp' => ['type' => $postgres ? 'TIMESTAMPTZ' : 'TIMESTAMP', 'default' => new RawSql('CURRENT_TIMESTAMP')],
             'data' => ['type' => 'BLOB'],
         ]);
         $this->forge->addKey('id', true);

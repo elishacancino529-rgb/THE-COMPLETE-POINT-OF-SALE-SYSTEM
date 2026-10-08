@@ -13,13 +13,13 @@ A CodeIgniter 4 point-of-sale system for a car showroom. Staff can manage cars, 
 - Sales history with product, customer, staff, quantity, total, and date
 - Dashboard with revenue, counts, recent sales, and low-stock notices
 
-Archived records are soft-deleted so historical sales retain their relationships. The migration adds `deleted_at` and `updated_at` fields to the brief's core schema, plus `media` and `ci_sessions` tables for persistent uploads and sessions.
+Archived records are soft-deleted so historical sales retain their relationships. The migration adds `deleted_at` and `updated_at` fields to the brief's core schema, plus `media` and `ci_sessions` tables for persistent uploads and sessions. It supports MySQL/MariaDB locally and PostgreSQL for a Vercel-hosted Neon database.
 
 ## Requirements
 
-- PHP 8.2 or newer with `intl`, `mbstring`, `mysqli`, and `fileinfo`
+- PHP 8.2 or newer with `intl`, `mbstring`, `fileinfo`, and the driver for your database (`mysqli` or `pgsql`)
 - Composer
-- MySQL or MariaDB
+- MySQL/MariaDB or PostgreSQL
 
 ## Local setup
 
@@ -40,9 +40,9 @@ Remove-Item Env:SEED_ADMIN_PASSWORD
 
 ## Vercel deployment
 
-The project includes `api/index.php` and `vercel.json` for the [community PHP runtime](https://github.com/vercel-community/php). Vercel's PHP runtime is community maintained. A persistent external MySQL database is required because Vercel Functions do not provide persistent local storage. The app stores sessions and uploaded images in MySQL; temporary framework files use `/tmp` on Vercel.
+The project includes `api/index.php` and `vercel.json` for the [community PHP runtime](https://github.com/vercel-community/php). Vercel's PHP runtime is community maintained. A persistent external database is required because Vercel Functions do not provide persistent local storage. The app stores sessions and uploaded images in the database; temporary framework files use `/tmp` on Vercel.
 
-1. Provision a MySQL database that accepts connections from Vercel Functions.
+1. Provision a PostgreSQL database through Neon or a MySQL database that accepts connections from Vercel Functions.
 2. Apply the migration and seeder from a trusted PHP environment connected to that database. Set `SEED_ADMIN_PASSWORD` only for the seed command.
 3. Import this GitHub repository into Vercel or run `vercel --prod` from the project root.
 4. In Vercel project settings, add these environment variables for Production:
@@ -50,11 +50,12 @@ The project includes `api/index.php` and `vercel.json` for the [community PHP ru
 | Variable | Value |
 | --- | --- |
 | `CI_ENVIRONMENT` | `production` |
-| `POS_DB_HOST` | Database hostname |
-| `POS_DB_NAME` | Database name |
-| `POS_DB_USER` | Database username |
-| `POS_DB_PASSWORD` | Database password |
-| `POS_DB_PORT` | Database port, usually `3306` |
+| `POSTGRES_URL` | PostgreSQL connection URL supplied by Neon, **or** use the `POS_DB_*` MySQL variables below |
+| `POS_DB_HOST` | MySQL hostname, when using MySQL |
+| `POS_DB_NAME` | MySQL database name |
+| `POS_DB_USER` | MySQL username |
+| `POS_DB_PASSWORD` | MySQL password |
+| `POS_DB_PORT` | MySQL port, usually `3306` |
 | `APP_BASE_URL` | Final HTTPS site URL, ending in `/` |
 
 The application uses `VERCEL_URL` when `APP_BASE_URL` is absent, but a stable production URL is preferable. Never commit `.env`, database credentials, or the seed password. `vendor/` is excluded from Git and installed by Composer during the Vercel PHP build.

@@ -40,7 +40,7 @@ class InitialSeeder extends Seeder
             if ($product && ! $product['image']) {
                 $bytes = file_get_contents(ROOTPATH . 'public/' . $file);
                 $this->db->table('media')->insert([
-                    'mime_type' => 'image/webp', 'content' => $bytes,
+                    'mime_type' => 'image/webp', 'content' => base64_encode($bytes),
                     'created_at' => date('Y-m-d H:i:s'),
                 ]);
                 $this->db->table('products')->where('id', $product['id'])

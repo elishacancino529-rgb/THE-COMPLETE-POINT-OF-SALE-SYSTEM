@@ -27,7 +27,7 @@ class Uploads
         $db = db_connect();
         $db->table('media')->insert([
             'mime_type' => $mime,
-            'content' => $bytes,
+            'content' => base64_encode($bytes),
             'created_at' => date('Y-m-d H:i:s'),
         ]);
         return 'media/' . $db->insertID();

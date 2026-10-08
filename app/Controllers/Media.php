@@ -17,6 +17,6 @@ class Media extends BaseController
             ->setHeader('Content-Disposition', 'inline')
             ->setHeader('X-Content-Type-Options', 'nosniff')
             ->setHeader('Cache-Control', 'private, max-age=3600')
-            ->setBody($row['content']);
+            ->setBody(base64_decode($row['content'], true) ?: '');
     }
 }
