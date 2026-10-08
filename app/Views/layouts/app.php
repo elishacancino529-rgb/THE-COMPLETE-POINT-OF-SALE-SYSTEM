@@ -9,10 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=showroom-2">
-  <?php if ($section === 'products' && $title === 'Inventory'): ?>
-  <script type="importmap">{"imports":{"three":"<?= base_url('three.module.js') ?>"}}</script>
-  <?php endif; ?>
+  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=showroom-3">
 </head>
 <body>
   <div class="app-shell">
@@ -45,6 +42,6 @@
       </div>
     </main>
   </div>
-  <?php if ($section === 'products' && $title === 'Inventory'): ?><script type="module" src="<?= base_url('viewer.js') ?>?v=2"></script><?php endif; ?>
+  <?php if ($section === 'products' && $title === 'Inventory'): ?><script type="module" src="<?= base_url('viewer.js') ?>?v=3"></script><?php endif; ?>
 </body>
 </html>

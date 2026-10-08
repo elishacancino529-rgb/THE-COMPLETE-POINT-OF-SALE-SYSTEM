@@ -197,9 +197,11 @@ body:not(.login-page){background-image:radial-gradient(circle at 75% 0,#15344a52
 .viewer-stage{height:min(57vh,510px);min-height:280px;background:#09111e;position:relative;overflow:hidden}
 .viewer-stage canvas{display:block;width:100%;height:100%;cursor:grab}
 .viewer-stage canvas:active{cursor:grabbing}
+.viewer-stage iframe{display:block;width:100%;height:100%;border:0;background:#09111e}
 .viewer-loading{position:absolute;inset:0;display:grid;place-items:center;color:#8eb0c1;font-size:13px}
 .viewer-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 24px;border-top:1px solid #2b4458}
 .viewer-bottom p{margin:0;color:#d1ebf5;font-size:11px;line-height:1.65}.viewer-bottom small{color:#6e9dae}
+.viewer-credit{color:#8ee4fa;font-size:11px;font-weight:700;text-align:right;line-height:1.4;text-decoration:underline;text-underline-offset:3px}.viewer-credit:hover{color:#fff}
 .viewer-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .paint-options{display:flex;gap:7px;margin-right:10px}
 .paint-options button{width:23px;height:23px;border-radius:50%;background:var(--paint);border:2px solid #182a39;outline:1px solid #6c8a99}

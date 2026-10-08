@@ -6,9 +6,6 @@
   "routes": [
     { "src": "/style.css", "dest": "/public/style.css" },
     { "src": "/viewer.js", "dest": "/public/viewer.js" },
-    { "src": "/three.module.js", "dest": "/public/three.module.js" },
-    { "src": "/three.core.js", "dest": "/public/three.core.js" },
-    { "src": "/OrbitControls.js", "dest": "/public/OrbitControls.js" },
     { "src": "/favicon.svg", "dest": "/public/favicon.svg" },
     { "src": "/mercedes-login.webp", "dest": "/public/mercedes-login.webp" },
     { "src": "/mercedes-s-class.webp", "dest": "/public/mercedes-s-class.webp" },

@@ -14,7 +14,7 @@ A CodeIgniter 4 point-of-sale system for a Mercedes-Benz themed car showroom. St
 - Reject sales that exceed available stock without creating a transaction
 - Sales history with product, customer, staff, quantity, total, and date
 - Dashboard with revenue, counts, recent sales, and low-stock notices
-- Fifteen sample Mercedes-Benz car listings with model-matched photographs, category filters, live search, price sorting, and an interactive 360° concept viewer
+- Fifteen sample Mercedes-Benz car listings with model-matched photographs, category filters, live search, price sorting, and rotatable 3D previews of the real Mercedes model families
 
 Archived records are soft-deleted so historical sales retain their relationships. The migration adds `deleted_at` and `updated_at` fields to the brief's core schema, plus `media` and `ci_sessions` tables for persistent uploads and sessions. It supports MySQL/MariaDB locally and PostgreSQL for a Vercel-hosted Neon database.
 
@@ -83,8 +83,30 @@ The application uses `VERCEL_URL` when `APP_BASE_URL` is absent, but a stable pr
 
 The app validates required fields and uploaded image type, size, and dimensions. It hashes staff passwords, regenerates the session after sign-in, checks the logged-in user on protected routes, and uses CSRF tokens on mutations. Sale recording uses a conditional SQL update and a transaction. If stock is insufficient or insertion fails, the transaction rolls back.
 
-Prices and labels in the sample catalog are demonstration data. Change them in Inventory before real use. The 360° viewer renders original stylized 3D concept models with sedan, SUV, electric, and performance profiles; they are not scans or exact manufacturer models. It uses a locally hosted [Three.js](https://threejs.org/) build under the MIT license, included at `public/THREE-LICENSE.txt`.
+Prices and labels in the sample catalog are demonstration data. Change them in Inventory before real use. The 360° previews embed independent 3D recreations of the named Mercedes-Benz model families from Sketchfab. They are not photographs, manufacturer configurator renders, or scans of the exact inventory vehicles; model year, trim, and color may differ from the listing photo. The embed loads only when a visitor opens a preview, and its creator is credited next to the viewer. Staff-added cars without a matched model keep their listing photo and do not show a 360° button.
 
 ## Image credits
 
 The sign-in and original three vehicle photos are by [Isaac Mitchell](https://www.pexels.com/photo/black-mercedes-benz-car-15171354/), [Mohit Hambiria](https://www.pexels.com/photo/new-mercedes-benz-in-showroom-20123634/), [Muhammet Raşit Kaplan](https://www.pexels.com/photo/white-mercedes-e-class-17233277/), and [Mike Bird](https://www.pexels.com/photo/black-mercedes-g-class-15610300/). Additional model photos via [Pexels](https://www.pexels.com/license/): [C-Class by Vitali Adutskevich](https://www.pexels.com/photo/black-mercedes-c-class-16284837/), [A-Class by Mike Bird](https://www.pexels.com/photo/mercedes-benz-a-class-hatchback-with-open-doors-31292760/), [CLA by Mike Bird](https://www.pexels.com/photo/white-mercedes-benz-cla-180-car-16495911/), [CLE by Molnár Tamás Photography](https://www.pexels.com/photo/white-mercedes-benz-cle-at-a-public-show-25634577/), [GLA by Mike Bird](https://www.pexels.com/photo/parked-white-mercedes-benz-gla-16714056/), [GLB by Batuhan Kocabaş](https://www.pexels.com/photo/mercedes-glb-200-17887805/), [GLC by Mike Bird](https://www.pexels.com/photo/red-mercedes-benz-glc-in-car-showroom-40084253/), [GLE by Mike Bird](https://www.pexels.com/photo/black-mercedes-benz-gle-on-a-parking-lot-14692379/), [GLS by Dextar Studio](https://www.pexels.com/photo/mercedes-amg-gls-63-at-a-car-dealership-18311312/), [EQE by Mike Bird](https://www.pexels.com/photo/sleek-black-mercedes-benz-eqe-on-outdoor-display-29830328/), [EQS by 04iraq](https://www.pexels.com/photo/mercedes-benz-eqs-electric-car-at-sunset-29779242/), and [AMG GT by Jacob Moore](https://www.pexels.com/photo/mercedes-amg-gt-16124128/). The three-pointed star asset is from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Star_2022.svg). Mercedes-Benz names and the star are trademarks of their respective owner.
+
+## 360° model credits
+
+The models remain hosted on Sketchfab and appear through its public viewer. Each model's page gives its creator and license; the [Sketchfab embedding guidance](https://sketchfab.com/press) permits embedding public models. The CLA model uses CC BY-SA 4.0; the other listed models use CC BY 4.0. No 3D asset files are redistributed by this repository.
+
+| Car | Model and creator |
+| --- | --- |
+| S-Class | [Mercedes S-class by SipanBareyan](https://sketchfab.com/models/8095e37cc664438d9e0995481280da97) |
+| E-Class | [Mercedes E Class W212 by Peter_D](https://sketchfab.com/models/119c5e10733142b197aa53b86f6aeb04) |
+| G-Class | [Mercedes G-class by Lexyc16](https://sketchfab.com/models/1a2a52b16cad4e618af347461817895c) |
+| C-Class | [2022 Mercedes-Benz C-Class by tonielpro520](https://sketchfab.com/models/5e1a44c940234b37aa0ffddf53e5f296) |
+| A-Class | [Mercedes-Benz A-Class W169 by Merc_TV](https://sketchfab.com/models/842e5669e54b49debebfa7b7b5ae2c15) |
+| CLA | [Mercedes Benz CLA by RADMATTER12](https://sketchfab.com/models/5fb2ada60d8b488dacf16a064fbbbb16) |
+| CLE | [Mercedes-Benz CLE by Nieve5677](https://sketchfab.com/models/c857767d5cc2498bb4c1dca111f554e3) |
+| GLA | [Mercedes-Benz GLA-Class 2020 by ItsDiyor](https://sketchfab.com/models/ab7b5df3ba634f38a14effde3d542466) |
+| GLB | [Mercedes GLB AMG by RADMATTER12](https://sketchfab.com/models/8e5418418908427b997e429e02dfafc4) |
+| GLC | [Mercedes-Benz GLC coupe by amogusstrikesback2](https://sketchfab.com/models/a2f1906aad304b2e99e657d2c82146dc) |
+| GLE | [Mercedes-Benz GLE-class W166 by Savelliy 07](https://sketchfab.com/models/1038fbd56eef423cbfd9370008d7dd8f) |
+| GLS | [Mercedes Benz GLS 450 by Es-star kings](https://sketchfab.com/models/7e2acb615d8f4d35bf3708acdd10f0b9) |
+| EQE | [Mercedes Benz EQE by Nieve5677](https://sketchfab.com/models/8c87a3c2e7444efbb671eefff1272632) |
+| EQS | [Mercedes Benz EQS by ixumix.sds](https://sketchfab.com/models/7be15f3c83534c7698dc78e1c25e7562) |
+| AMG GT | [Mercedes Benz AMG GT by Yan Carvalho](https://sketchfab.com/models/661dcab94455463784651a3ebc63cfb9) |

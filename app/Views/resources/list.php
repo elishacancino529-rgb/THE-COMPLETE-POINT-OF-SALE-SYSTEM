@@ -3,6 +3,25 @@ $labels = ['products' => ['Inventory', 'car'], 'customers' => ['Customers', 'cus
 [$label, $single] = $labels[$kind];
 
 if ($kind === 'products'):
+    // Public Sketchfab embeds of actual Mercedes-Benz model families. These are
+    // illustrative 3D renders, not a scan of the particular stock vehicle.
+    $carPreviews = [
+        'Mercedes-Benz S-Class' => ['8095e37cc664438d9e0995481280da97', 'SipanBareyan'],
+        'Mercedes-Benz E-Class' => ['119c5e10733142b197aa53b86f6aeb04', 'Peter_D'],
+        'Mercedes-Benz G-Class' => ['1a2a52b16cad4e618af347461817895c', 'Lexyc16'],
+        'Mercedes-Benz C-Class' => ['5e1a44c940234b37aa0ffddf53e5f296', 'tonielpro520'],
+        'Mercedes-Benz A-Class' => ['842e5669e54b49debebfa7b7b5ae2c15', 'Merc_TV'],
+        'Mercedes-Benz CLA' => ['5fb2ada60d8b488dacf16a064fbbbb16', 'RADMATTER12'],
+        'Mercedes-Benz CLE' => ['c857767d5cc2498bb4c1dca111f554e3', 'Nieve5677'],
+        'Mercedes-Benz GLA' => ['ab7b5df3ba634f38a14effde3d542466', 'ItsDiyor'],
+        'Mercedes-Benz GLB' => ['8e5418418908427b997e429e02dfafc4', 'RADMATTER12'],
+        'Mercedes-Benz GLC' => ['a2f1906aad304b2e99e657d2c82146dc', 'amogusstrikesback2'],
+        'Mercedes-Benz GLE' => ['1038fbd56eef423cbfd9370008d7dd8f', 'Savelliy 07'],
+        'Mercedes-Benz GLS' => ['7e2acb615d8f4d35bf3708acdd10f0b9', 'Es-star kings'],
+        'Mercedes-Benz EQE' => ['8c87a3c2e7444efbb671eefff1272632', 'Nieve5677'],
+        'Mercedes-Benz EQS' => ['7be15f3c83534c7698dc78e1c25e7562', 'ixumix.sds'],
+        'Mercedes-AMG GT' => ['661dcab94455463784651a3ebc63cfb9', 'Yan Carvalho'],
+    ];
     $categoryFor = static function (string $name): string {
         if (preg_match('/\b(EQE|EQS)\b/i', $name)) return 'electric';
         if (preg_match('/\b(AMG GT|SL)\b/i', $name)) return 'performance';
@@ -51,7 +70,9 @@ if ($kind === 'products'):
       <?php else: ?>
         <div class="car-image-placeholder" role="img" aria-label="Photo not yet uploaded for <?= esc($row['name']) ?>"><span>PHOTO<br>COMING SOON</span></div>
       <?php endif; ?>
-      <button type="button" class="spin-trigger" data-car-name="<?= esc($row['name']) ?>" data-car-category="<?= esc($category) ?>" aria-label="Open 360-degree preview of <?= esc($row['name']) ?>"><span class="spin-glyph">⟳</span> 360° VIEW</button>
+      <?php if (isset($carPreviews[$row['name']])): [$previewId, $previewCreator] = $carPreviews[$row['name']]; ?>
+        <button type="button" class="spin-trigger" data-car-name="<?= esc($row['name']) ?>" data-preview-id="<?= esc($previewId) ?>" data-preview-creator="<?= esc($previewCreator) ?>" aria-label="Open 360-degree preview of <?= esc($row['name']) ?>"><span class="spin-glyph">⟳</span> 360° VIEW</button>
+      <?php endif; ?>
     </div>
     <div class="car-details"><div class="car-details-top"><div><span class="car-series">MERCEDES-BENZ / <?= esc(strtoupper($category)) ?></span><h2><?= esc($row['name']) ?></h2></div><span class="stock-pill <?= $row['stock_quantity'] == 0 ? 'out' : '' ?>"><?= (int) $row['stock_quantity'] ?> available</span></div>
       <div class="car-details-bottom"><div><small>STARTING AT</small><strong>$<?= number_format((float) $row['price'], 0) ?></strong></div><div class="card-actions"><a href="<?= site_url('products/' . $row['id'] . '/edit') ?>">Edit ↗</a><form method="post" action="<?= site_url('products/' . $row['id'] . '/delete') ?>" onsubmit="return confirm('Archive this car?')"><?= csrf_field() ?><button type="submit">Archive</button></form></div></div>
@@ -63,9 +84,9 @@ if ($kind === 'products'):
 <?php endif; ?>
 
 <dialog id="car-viewer" class="car-viewer" aria-labelledby="viewer-title">
-  <div class="viewer-top"><div><span class="eyebrow">INTERACTIVE 360° SHOWROOM</span><h2 id="viewer-title">Mercedes-Benz</h2></div><button type="button" class="viewer-close" aria-label="Close 360-degree preview">×</button></div>
-  <div class="viewer-stage" id="viewer-stage"><div class="viewer-loading">Preparing 3D preview…</div></div>
-  <div class="viewer-bottom"><p>Drag to rotate · Scroll to zoom<br><small>Stylized 3D concept preview</small></p><div class="viewer-controls"><div class="paint-options" aria-label="Car color"><button type="button" data-paint="#c9e4ee" class="is-active" style="--paint:#c9e4ee" aria-label="Silver paint" aria-pressed="true"></button><button type="button" data-paint="#202a3b" style="--paint:#202a3b" aria-label="Midnight paint" aria-pressed="false"></button><button type="button" data-paint="#176b88" style="--paint:#176b88" aria-label="Blue paint" aria-pressed="false"></button><button type="button" data-paint="#a62137" style="--paint:#a62137" aria-label="Red paint" aria-pressed="false"></button></div><button type="button" class="viewer-action" id="viewer-reset">Reset view</button><button type="button" class="viewer-action is-active" id="viewer-spin" aria-pressed="true">Auto spin: on</button></div></div>
+  <div class="viewer-top"><div><span class="eyebrow">REAL MERCEDES MODEL / INTERACTIVE 360°</span><h2 id="viewer-title">Mercedes-Benz</h2></div><button type="button" class="viewer-close" aria-label="Close 360-degree preview">×</button></div>
+  <div class="viewer-stage" id="viewer-stage"><div class="viewer-loading">Choose a car to explore it in 3D.</div></div>
+  <div class="viewer-bottom"><p>Drag to rotate · Scroll or pinch to zoom<br><small>Model year and finish may differ from the listed car.</small></p><a class="viewer-credit" id="viewer-credit" href="#" target="_blank" rel="noopener noreferrer">3D model on Sketchfab ↗</a></div>
 </dialog>
 <?php else: ?>
 <div class="page-heading"><div><p class="eyebrow">MANAGEMENT</p><h1><?= $label ?></h1><p class="subtle">Keep your <?= strtolower($label) ?> up to date.</p></div><a class="button button-accent" href="<?= site_url($kind . '/new') ?>">＋ Add <?= $single ?></a></div>
