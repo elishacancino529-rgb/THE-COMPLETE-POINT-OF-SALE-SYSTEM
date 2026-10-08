@@ -43,14 +43,15 @@ Remove-Item Env:SEED_ADMIN_PASSWORD
 The project includes `api/index.php` and `vercel.json` for the [community PHP runtime](https://github.com/vercel-community/php). Vercel's PHP runtime is community maintained. A persistent external database is required because Vercel Functions do not provide persistent local storage. The app stores sessions and uploaded images in the database; temporary framework files use `/tmp` on Vercel.
 
 1. Provision a PostgreSQL database through Neon or a MySQL database that accepts connections from Vercel Functions.
-2. Apply the migration and seeder from a trusted PHP environment connected to that database. Set `SEED_ADMIN_PASSWORD` only for the seed command.
-3. Import this GitHub repository into Vercel or run `vercel --prod` from the project root.
-4. In Vercel project settings, add these environment variables for Production:
+2. Connect the database to the Vercel project, or set the MySQL connection variables below.
+3. On the first production build, provide `SEED_ADMIN_PASSWORD` as a temporary build-time variable with the separately provided project password. The Composer `vercel` hook runs migrations and seeds the first account and sample cars. Remove that variable after the first successful build; later builds run the idempotent seeder without it.
+4. Import this GitHub repository into Vercel or run `vercel --prod` from the project root.
+5. In Vercel project settings, add these environment variables for Production:
 
 | Variable | Value |
 | --- | --- |
 | `CI_ENVIRONMENT` | `production` |
-| `POSTGRES_URL` | PostgreSQL connection URL supplied by Neon, **or** use the `POS_DB_*` MySQL variables below |
+| `POSTGRES_URL` or `DATABASE_URL` | PostgreSQL connection URL supplied by Neon, **or** use the `POS_DB_*` MySQL variables below |
 | `POS_DB_HOST` | MySQL hostname, when using MySQL |
 | `POS_DB_NAME` | MySQL database name |
 | `POS_DB_USER` | MySQL username |

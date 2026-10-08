@@ -8,12 +8,11 @@ class InitialSeeder extends Seeder
 {
     public function run()
     {
-        $password = getenv('SEED_ADMIN_PASSWORD');
-        if (! $password) {
-            throw new \RuntimeException('Set SEED_ADMIN_PASSWORD before seeding.');
-        }
-
         if (! $this->db->table('users')->where('username', 'SirVon')->countAllResults()) {
+            $password = getenv('SEED_ADMIN_PASSWORD');
+            if (! $password) {
+                throw new \RuntimeException('Set SEED_ADMIN_PASSWORD before the first seed.');
+            }
             $this->db->table('users')->insert([
                 'username' => 'SirVon',
                 'full_name' => 'SirVon',

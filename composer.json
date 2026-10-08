@@ -1,6 +1,6 @@
 {
-    "name": "codeigniter4/appstarter",
-    "description": "CodeIgniter4 starter app",
+    "name": "velos/automotive-pos",
+    "description": "VELOS automotive point-of-sale system built with CodeIgniter 4",
     "license": "MIT",
     "type": "project",
     "homepage": "https://codeigniter.com",
@@ -38,6 +38,10 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "vercel": [
+            "@php spark migrate --all",
+            "@php spark db:seed InitialSeeder"
+        ]
     }
 }
