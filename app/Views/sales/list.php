@@ -1,0 +1,6 @@
+<div class="page-heading"><div><p class="eyebrow">TRANSACTIONS</p><h1>Sales history</h1><p class="subtle">Every completed sale, recorded in one place.</p></div><a class="button button-accent" href="<?= site_url('sales/new') ?>">＋ Record sale</a></div>
+<section class="panel data-panel"><div class="list-toolbar"><div><strong><?= count($rows) ?> transactions</strong><span> on record</span></div></div>
+<?php if (!$rows): ?><div class="empty-state">No transactions yet. <a href="<?= site_url('sales/new') ?>">Record the first sale.</a></div><?php else: ?>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>Sale</th><th>Car</th><th>Customer</th><th>Staff</th><th>Quantity</th><th>Total</th><th>Date</th></tr></thead><tbody>
+<?php foreach ($rows as $row): ?><tr><td><span class="sale-id">#<?= str_pad($row['id'], 4, '0', STR_PAD_LEFT) ?></span></td><td><strong><?= esc($row['product_name']) ?></strong></td><td><?= esc($row['customer_name'] ?: 'Walk-in customer') ?></td><td><?= esc($row['staff_name']) ?></td><td><?= (int) $row['quantity'] ?></td><td class="money">$<?= number_format((float) $row['total_price'], 2) ?></td><td><?= date('M j, Y · g:i A', strtotime($row['created_at'])) ?></td></tr><?php endforeach; ?>
+</tbody></table></div><?php endif; ?></section>

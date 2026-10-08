@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.php": { "runtime": "vercel-php@0.6.2" }
+  },
+  "routes": [
+    { "src": "/style.css", "dest": "/public/style.css" },
+    { "src": "/favicon.svg", "dest": "/public/favicon.svg" },
+    { "src": "/hero-car.webp", "dest": "/public/hero-car.webp" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ]
+}
