@@ -5,11 +5,27 @@
   },
   "routes": [
     { "src": "/style.css", "dest": "/public/style.css" },
+    { "src": "/viewer.js", "dest": "/public/viewer.js" },
+    { "src": "/three.module.js", "dest": "/public/three.module.js" },
+    { "src": "/three.core.js", "dest": "/public/three.core.js" },
+    { "src": "/OrbitControls.js", "dest": "/public/OrbitControls.js" },
     { "src": "/favicon.svg", "dest": "/public/favicon.svg" },
     { "src": "/mercedes-login.webp", "dest": "/public/mercedes-login.webp" },
     { "src": "/mercedes-s-class.webp", "dest": "/public/mercedes-s-class.webp" },
     { "src": "/mercedes-e-class.webp", "dest": "/public/mercedes-e-class.webp" },
     { "src": "/mercedes-g-class.webp", "dest": "/public/mercedes-g-class.webp" },
+    { "src": "/mercedes-c-class.webp", "dest": "/public/mercedes-c-class.webp" },
+    { "src": "/mercedes-a-class.webp", "dest": "/public/mercedes-a-class.webp" },
+    { "src": "/mercedes-cla.webp", "dest": "/public/mercedes-cla.webp" },
+    { "src": "/mercedes-cle.webp", "dest": "/public/mercedes-cle.webp" },
+    { "src": "/mercedes-gla.webp", "dest": "/public/mercedes-gla.webp" },
+    { "src": "/mercedes-glb.webp", "dest": "/public/mercedes-glb.webp" },
+    { "src": "/mercedes-glc.webp", "dest": "/public/mercedes-glc.webp" },
+    { "src": "/mercedes-gle.webp", "dest": "/public/mercedes-gle.webp" },
+    { "src": "/mercedes-gls.webp", "dest": "/public/mercedes-gls.webp" },
+    { "src": "/mercedes-eqe.webp", "dest": "/public/mercedes-eqe.webp" },
+    { "src": "/mercedes-eqs.webp", "dest": "/public/mercedes-eqs.webp" },
+    { "src": "/mercedes-amg-gt.webp", "dest": "/public/mercedes-amg-gt.webp" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

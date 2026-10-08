@@ -6,14 +6,14 @@
   <link rel="icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=mercedes-1">
+  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=showroom-2">
 </head>
 <body class="login-page">
 <div class="login-shell">
   <div class="login-art" style="--login-image:url('<?= base_url('mercedes-login.webp') ?>')">
     <a class="brand login-brand" href="<?= site_url('/') ?>" aria-label="Mercedes-Benz showroom home"><span class="brand-mark"><img src="<?= base_url('favicon.svg') ?>" alt=""></span><span>Mercedes-Benz</span></a>
-    <div class="login-art-copy"><span class="tiny-label">MERCEDES-BENZ SHOWROOM</span><h1>Every detail.<br>Every drive.</h1><p>Inventory, customers, and sales in one refined workspace.</p></div>
-    <div class="login-art-footer">SHOWROOM POINT OF SALE <span>STUDENT PROJECT · <?= date('Y') ?></span></div>
+    <div class="login-art-copy"><span class="tiny-label">MERCEDES-BENZ SHOWROOM</span><h1>Drive the<br>extraordinary<span class="heading-dot">.</span></h1><p>Your showroom is ready when you are.</p></div>
+    <div class="login-art-footer"><span>THE DRIVE STARTS HERE</span><span>↗</span></div>
   </div>
   <main class="login-panel">
     <div class="login-card">
@@ -27,7 +27,7 @@
         <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required>
         <button type="submit" class="button button-accent button-full">Sign in <span>↗</span></button>
       </form>
-      <div class="login-footnote">Authorized staff only · Unofficial student project</div>
+      <div class="login-footnote">Authorized staff access</div>
     </div>
   </main>
 </div>

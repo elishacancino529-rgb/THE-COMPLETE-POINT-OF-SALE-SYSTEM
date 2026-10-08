@@ -27,6 +27,18 @@ class InitialSeeder extends Seeder
                 ['name' => 'Mercedes-Benz S-Class', 'price' => '128000.00', 'stock_quantity' => 4, 'created_at' => $now],
                 ['name' => 'Mercedes-Benz E-Class', 'price' => '89500.00', 'stock_quantity' => 6, 'created_at' => $now],
                 ['name' => 'Mercedes-Benz G-Class', 'price' => '164000.00', 'stock_quantity' => 2, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz C-Class', 'price' => '61200.00', 'stock_quantity' => 7, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz A-Class', 'price' => '43800.00', 'stock_quantity' => 8, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz CLA', 'price' => '55700.00', 'stock_quantity' => 5, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz CLE', 'price' => '73500.00', 'stock_quantity' => 3, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz GLA', 'price' => '54800.00', 'stock_quantity' => 6, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz GLB', 'price' => '58900.00', 'stock_quantity' => 4, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz GLC', 'price' => '71200.00', 'stock_quantity' => 5, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz GLE', 'price' => '98600.00', 'stock_quantity' => 3, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz GLS', 'price' => '121500.00', 'stock_quantity' => 2, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz EQE', 'price' => '92400.00', 'stock_quantity' => 4, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz EQS', 'price' => '137500.00', 'stock_quantity' => 2, 'created_at' => $now],
+                ['name' => 'Mercedes-AMG GT', 'price' => '158900.00', 'stock_quantity' => 2, 'created_at' => $now],
             ]);
         }
 

@@ -9,13 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=mercedes-1">
+  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=showroom-2">
+  <?php if ($section === 'products' && $title === 'Inventory'): ?>
+  <script type="importmap">{"imports":{"three":"<?= base_url('three.module.js') ?>"}}</script>
+  <?php endif; ?>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
       <a class="brand" href="<?= site_url('/') ?>" aria-label="Mercedes-Benz showroom home"><span class="brand-mark"><img src="<?= base_url('favicon.svg') ?>" alt=""></span><span>Mercedes-Benz</span></a>
-      <div class="sidebar-caption">SHOWROOM POINT OF SALE</div>
+      <div class="sidebar-caption">DRIVE MODE / ON</div>
       <nav class="main-nav" aria-label="Main navigation">
         <a class="nav-link <?= $section === 'overview' ? 'active' : '' ?>" href="<?= site_url('/') ?>"><span class="nav-icon">▦</span> Overview</a>
         <a class="nav-link <?= $section === 'products' ? 'active' : '' ?>" href="<?= site_url('products') ?>"><span class="nav-icon">◈</span> Inventory</a>
@@ -23,7 +26,7 @@
         <a class="nav-link <?= $section === 'customers' ? 'active' : '' ?>" href="<?= site_url('customers') ?>"><span class="nav-icon">◎</span> Customers</a>
         <a class="nav-link <?= $section === 'staff' ? 'active' : '' ?>" href="<?= site_url('staff') ?>"><span class="nav-icon">♧</span> Staff</a>
       </nav>
-      <div class="sidebar-bottom"><span class="online-dot"></span> System ready <span class="version">Student project</span></div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> System ready <span class="version">LIVE SHOWROOM</span></div>
     </aside>
     <main class="main-content">
       <header class="topbar">
@@ -42,5 +45,6 @@
       </div>
     </main>
   </div>
+  <?php if ($section === 'products' && $title === 'Inventory'): ?><script type="module" src="<?= base_url('viewer.js') ?>?v=2"></script><?php endif; ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
-<div class="page-heading"><div><p class="eyebrow">GOOD TO SEE YOU, <?= esc(strtoupper((string) session('user_name'))) ?></p><h1>Showroom overview</h1><p class="subtle">A clear view of your inventory and sales activity.</p></div><span class="today-date"><?= date('l, F j, Y') ?></span></div>
+<div class="page-heading"><div><p class="eyebrow">GOOD TO SEE YOU, <?= esc(strtoupper((string) session('user_name'))) ?></p><h1>Your showroom<span class="heading-dot">.</span></h1><p class="subtle">Everything in motion, all in one place.</p></div><span class="today-date"><?= date('l, F j, Y') ?></span></div>
 <section class="hero" style="--hero-image:url('<?= base_url('mercedes-s-class.webp') ?>')">
-  <div class="hero-content"><span class="hero-tag"><span class="online-dot"></span> MERCEDES-BENZ SHOWROOM</span><h2>Every detail,<br>in place.</h2><p>Keep your inventory, customers, and sales moving with clarity.</p><a href="<?= site_url('sales/new') ?>" class="button button-light">Record a sale <span>↗</span></a></div>
-  <span class="hero-index">SHOWROOM / POINT OF SALE</span>
+  <div class="hero-content"><span class="hero-tag"><span class="online-dot"></span> MERCEDES-BENZ SHOWROOM</span><h2>FULL<br>THROTTLE<span class="heading-dot">.</span></h2><p>Fresh arrivals. Fast moves. Your next sale starts here.</p><div class="hero-buttons"><a href="<?= site_url('products') ?>" class="button button-light">Explore cars <span>↗</span></a><a href="<?= site_url('sales/new') ?>" class="button button-outline">Record a sale <span>↗</span></a></div></div>
+  <span class="hero-index">THE DRIVE STARTS HERE / 001</span>
 </section>
 <section class="stats-grid" aria-label="Business metrics">
   <div class="stat-card"><div class="stat-top"><span>Cars in inventory</span><span class="stat-symbol">◈</span></div><strong><?= number_format($cars) ?></strong><a href="<?= site_url('products') ?>">View inventory ↗</a></div>
