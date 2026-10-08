@@ -194,7 +194,12 @@ class Database extends Config
     {
         parent::__construct();
 
-        $postgresUrl = getenv('POSTGRES_URL') ?: getenv('DATABASE_URL');
+        // Database sessions use PostgreSQL advisory locks, so prefer a direct
+        // connection over transaction-pooled URLs when Neon supplies both.
+        $postgresUrl = getenv('POSTGRES_URL_NON_POOLING')
+            ?: getenv('DATABASE_URL_UNPOOLED')
+            ?: getenv('POSTGRES_URL')
+            ?: getenv('DATABASE_URL');
         if ($postgresUrl && str_starts_with($postgresUrl, 'postgres')) {
             $parts = parse_url($postgresUrl);
             $this->default['hostname'] = $parts['host'] ?? '';

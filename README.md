@@ -51,7 +51,7 @@ The project includes `api/index.php` and `vercel.json` for the [community PHP ru
 | Variable | Value |
 | --- | --- |
 | `CI_ENVIRONMENT` | `production` |
-| `POSTGRES_URL` or `DATABASE_URL` | PostgreSQL connection URL supplied by Neon, **or** use the `POS_DB_*` MySQL variables below |
+| `POSTGRES_URL_NON_POOLING`, `DATABASE_URL_UNPOOLED`, `POSTGRES_URL`, or `DATABASE_URL` | PostgreSQL URL supplied by Neon. Direct connections are preferred for database-backed sessions. Alternatively use the `POS_DB_*` MySQL variables below. |
 | `POS_DB_HOST` | MySQL hostname, when using MySQL |
 | `POS_DB_NAME` | MySQL database name |
 | `POS_DB_USER` | MySQL username |
