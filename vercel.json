@@ -6,7 +6,10 @@
   "routes": [
     { "src": "/style.css", "dest": "/public/style.css" },
     { "src": "/favicon.svg", "dest": "/public/favicon.svg" },
-    { "src": "/hero-car.webp", "dest": "/public/hero-car.webp" },
+    { "src": "/mercedes-login.webp", "dest": "/public/mercedes-login.webp" },
+    { "src": "/mercedes-s-class.webp", "dest": "/public/mercedes-s-class.webp" },
+    { "src": "/mercedes-e-class.webp", "dest": "/public/mercedes-e-class.webp" },
+    { "src": "/mercedes-g-class.webp", "dest": "/public/mercedes-g-class.webp" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

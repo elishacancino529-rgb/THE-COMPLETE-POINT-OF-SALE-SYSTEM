@@ -1,7 +1,7 @@
 <div class="page-heading"><div><p class="eyebrow">GOOD TO SEE YOU, <?= esc(strtoupper((string) session('user_name'))) ?></p><h1>Showroom overview</h1><p class="subtle">A clear view of your inventory and sales activity.</p></div><span class="today-date"><?= date('l, F j, Y') ?></span></div>
-<section class="hero" style="background-image:linear-gradient(90deg,rgba(17,6,7,.96) 0%,rgba(17,6,7,.82) 34%,rgba(17,6,7,.05) 75%),url('<?= base_url('hero-car.webp') ?>')">
-  <div class="hero-content"><span class="hero-tag"><span class="online-dot"></span> YOUR SHOWROOM, IN MOTION</span><h2>Power in every<br>transaction.</h2><p>Manage your cars, connect with customers, and keep every sale moving.</p><a href="<?= site_url('sales/new') ?>" class="button button-light">Record a sale <span>↗</span></a></div>
-  <span class="hero-index">01 / VELOS DRIVE</span>
+<section class="hero" style="--hero-image:url('<?= base_url('mercedes-s-class.webp') ?>')">
+  <div class="hero-content"><span class="hero-tag"><span class="online-dot"></span> MERCEDES-BENZ SHOWROOM</span><h2>Every detail,<br>in place.</h2><p>Keep your inventory, customers, and sales moving with clarity.</p><a href="<?= site_url('sales/new') ?>" class="button button-light">Record a sale <span>↗</span></a></div>
+  <span class="hero-index">SHOWROOM / POINT OF SALE</span>
 </section>
 <section class="stats-grid" aria-label="Business metrics">
   <div class="stat-card"><div class="stat-top"><span>Cars in inventory</span><span class="stat-symbol">◈</span></div><strong><?= number_format($cars) ?></strong><a href="<?= site_url('products') ?>">View inventory ↗</a></div>

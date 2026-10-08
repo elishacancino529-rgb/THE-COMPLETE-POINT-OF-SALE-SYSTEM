@@ -1,6 +1,6 @@
-# VELOS Automotive Point of Sale
+# Mercedes-Benz Showroom Point of Sale
 
-A CodeIgniter 4 point-of-sale system for a car showroom. Staff can manage cars, customers, and team members; record a sale; and review sales history. The interface is responsive and uses original generated automotive imagery.
+A CodeIgniter 4 point-of-sale system for a Mercedes-Benz themed car showroom. Staff can manage cars, customers, and team members; record a sale; and review sales history. This is an unofficial student project and is not affiliated with Mercedes-Benz Group AG.
 
 **Live site:** [velos-pos.vercel.app](https://velos-pos.vercel.app/login)
 
@@ -29,7 +29,7 @@ Archived records are soft-deleted so historical sales retain their relationships
 2. Create an empty MySQL database named `velos_pos`.
 3. Copy `env` to `.env`. Set `CI_ENVIRONMENT = development`, `app.baseURL = 'http://localhost:8080/'`, and the `database.default.*` MySQL connection fields.
 4. Run `php spark migrate --all`.
-5. Set `SEED_ADMIN_PASSWORD` in your terminal to the password provided separately for the project, then run `php spark db:seed InitialSeeder`. The seeder creates username `SirVon`, hashes the supplied password, and adds three sample cars with images. The password is never stored in the repository.
+5. Set `SEED_ADMIN_PASSWORD` in your terminal to the password provided separately for the project, then run `php spark db:seed InitialSeeder`. The seeder creates username `SirVon`, hashes the supplied password, and adds three Mercedes-Benz sample cars with images. The password is never stored in the repository.
 6. Run `php spark serve --host localhost --port 8080` and open `http://localhost:8080/login`.
 
 For PowerShell, the seed command can be run with:
@@ -44,7 +44,7 @@ Remove-Item Env:SEED_ADMIN_PASSWORD
 
 The project includes `api/index.php` and `vercel.json` for the [community PHP runtime](https://github.com/vercel-community/php). Vercel's PHP runtime is community maintained. A persistent external database is required because Vercel Functions do not provide persistent local storage. The app stores sessions and uploaded images in the database; temporary framework files use `/tmp` on Vercel.
 
-The live deployment uses the Vercel project `velos-pos` in the `elishas-projects-c8707e7b` team with its connected Neon PostgreSQL database. Its Production environment has `APP_BASE_URL=https://velos-pos.vercel.app/`. The initial migration and seed completed on the first build; later builds run them idempotently without `SEED_ADMIN_PASSWORD`.
+The live deployment uses the Vercel project `velos-pos` in the `elishas-projects-c8707e7b` team with its connected Neon PostgreSQL database. Its Production environment has `APP_BASE_URL=https://velos-pos.vercel.app/`. The initial migration and seed completed on the first build; later builds run them idempotently without `SEED_ADMIN_PASSWORD`. A later migration renames only the original fictional demo models and replaces their images only when the stored image still matches the initial seed. It preserves existing stock, prices, customers, staff, and sales.
 
 1. Provision a PostgreSQL database through Neon or a MySQL database that accepts connections from Vercel Functions.
 2. Connect the database to the Vercel project, or set the MySQL connection variables below.
@@ -83,3 +83,7 @@ The application uses `VERCEL_URL` when `APP_BASE_URL` is absent, but a stable pr
 The app validates required fields and uploaded image type, size, and dimensions. It hashes staff passwords, regenerates the session after sign-in, checks the logged-in user on protected routes, and uses CSRF tokens on mutations. Sale recording uses a conditional SQL update and a transaction. If stock is insufficient or insertion fails, the transaction rolls back.
 
 Prices and labels in the sample catalog are demonstration data. Change them in Inventory before real use.
+
+## Image credits
+
+The Mercedes-Benz vehicle photos are by [Isaac Mitchell](https://www.pexels.com/photo/black-mercedes-benz-car-15171354/), [Mohit Hambiria](https://www.pexels.com/photo/new-mercedes-benz-in-showroom-20123634/), [Muhammet Raşit Kaplan](https://www.pexels.com/photo/white-mercedes-e-class-17233277/), and [Mike Bird](https://www.pexels.com/photo/black-mercedes-g-class-15610300/) via [Pexels](https://www.pexels.com/license/). The three-pointed star asset is from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Star_2022.svg). Mercedes-Benz names and the star are trademarks of their respective owner.

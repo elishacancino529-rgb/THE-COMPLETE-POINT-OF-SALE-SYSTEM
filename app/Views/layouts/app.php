@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#160d0e">
+  <meta name="theme-color" content="#0b1217">
   <link rel="icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
-  <title><?= esc($title) ?> · VELOS POS</title>
+  <title><?= esc($title) ?> · Mercedes-Benz Showroom POS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= base_url('style.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('style.css') ?>?v=mercedes-1">
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="<?= site_url('/') ?>" aria-label="Velos home"><span class="brand-mark">✦</span><span>VELOS<span class="brand-dot">.</span></span></a>
-      <div class="sidebar-caption">AUTOMOTIVE POS</div>
+      <a class="brand" href="<?= site_url('/') ?>" aria-label="Mercedes-Benz showroom home"><span class="brand-mark"><img src="<?= base_url('favicon.svg') ?>" alt=""></span><span>Mercedes-Benz</span></a>
+      <div class="sidebar-caption">SHOWROOM POINT OF SALE</div>
       <nav class="main-nav" aria-label="Main navigation">
         <a class="nav-link <?= $section === 'overview' ? 'active' : '' ?>" href="<?= site_url('/') ?>"><span class="nav-icon">▦</span> Overview</a>
         <a class="nav-link <?= $section === 'products' ? 'active' : '' ?>" href="<?= site_url('products') ?>"><span class="nav-icon">◈</span> Inventory</a>
@@ -23,11 +23,11 @@
         <a class="nav-link <?= $section === 'customers' ? 'active' : '' ?>" href="<?= site_url('customers') ?>"><span class="nav-icon">◎</span> Customers</a>
         <a class="nav-link <?= $section === 'staff' ? 'active' : '' ?>" href="<?= site_url('staff') ?>"><span class="nav-icon">♧</span> Staff</a>
       </nav>
-      <div class="sidebar-bottom"><span class="online-dot"></span> System ready <span class="version">v1.0</span></div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> System ready <span class="version">Student project</span></div>
     </aside>
     <main class="main-content">
       <header class="topbar">
-        <div class="breadcrumb">VELOS <span>/</span> <?= esc($title) ?></div>
+        <div class="breadcrumb">MERCEDES-BENZ <span>/</span> <?= esc($title) ?></div>
         <div class="topbar-actions">
           <a class="button button-compact button-accent" href="<?= site_url('sales/new') ?>"><span>＋</span> New sale</a>
           <div class="user-chip"><span class="user-avatar"><?= esc(strtoupper(substr((string) session('user_name'), 0, 1))) ?></span><span><?= esc(session('user_name')) ?></span></div>

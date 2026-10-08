@@ -5,7 +5,7 @@
     <?= csrf_field() ?>
     <?php if ($kind === 'products'): ?>
       <div class="form-section-head"><span class="form-section-icon">◈</span><div><h2>Car details</h2><p>Name, price, and units available for sale.</p></div></div>
-      <div class="field-grid"><div class="field full"><label for="name">Car name <b>*</b></label><input id="name" name="name" maxlength="100" value="<?= esc(old('name', $row['name'] ?? '')) ?>" required placeholder="e.g. Apex GT"></div>
+      <div class="field-grid"><div class="field full"><label for="name">Car name <b>*</b></label><input id="name" name="name" maxlength="100" value="<?= esc(old('name', $row['name'] ?? '')) ?>" required placeholder="e.g. Mercedes-Benz C-Class"></div>
       <div class="field"><label for="price">Price (USD) <b>*</b></label><div class="input-prefix"><span>$</span><input id="price" name="price" type="number" step="0.01" min="0" value="<?= esc(old('price', $row['price'] ?? '')) ?>" required placeholder="0.00"></div></div>
       <div class="field"><label for="stock_quantity">Stock quantity <b>*</b></label><input id="stock_quantity" name="stock_quantity" type="number" min="0" step="1" value="<?= esc(old('stock_quantity', $row['stock_quantity'] ?? '0')) ?>" required></div>
       <div class="field full"><label for="image">Car image</label><input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp"><small>JPEG, PNG, or WebP · up to 3 MB. <?php if ($editing): ?>Leave empty to keep the current image.<?php endif; ?></small></div></div>

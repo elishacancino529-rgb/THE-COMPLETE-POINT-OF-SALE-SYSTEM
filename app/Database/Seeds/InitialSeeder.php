@@ -24,16 +24,16 @@ class InitialSeeder extends Seeder
         if ($this->db->table('products')->countAllResults() === 0) {
             $now = date('Y-m-d H:i:s');
             $this->db->table('products')->insertBatch([
-                ['name' => 'Apex GT', 'price' => '128000.00', 'stock_quantity' => 4, 'created_at' => $now],
-                ['name' => 'Vortex S', 'price' => '89500.00', 'stock_quantity' => 6, 'created_at' => $now],
-                ['name' => 'Eclipse RS', 'price' => '164000.00', 'stock_quantity' => 2, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz S-Class', 'price' => '128000.00', 'stock_quantity' => 4, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz E-Class', 'price' => '89500.00', 'stock_quantity' => 6, 'created_at' => $now],
+                ['name' => 'Mercedes-Benz G-Class', 'price' => '164000.00', 'stock_quantity' => 2, 'created_at' => $now],
             ]);
         }
 
         foreach ([
-            'Apex GT' => 'hero-car.webp',
-            'Vortex S' => 'catalog-vortex.webp',
-            'Eclipse RS' => 'catalog-eclipse.webp',
+            'Mercedes-Benz S-Class' => 'mercedes-s-class.webp',
+            'Mercedes-Benz E-Class' => 'mercedes-e-class.webp',
+            'Mercedes-Benz G-Class' => 'mercedes-g-class.webp',
         ] as $name => $file) {
             $product = $this->db->table('products')->where('name', $name)->get()->getRowArray();
             if ($product && ! $product['image']) {
